@@ -10,9 +10,11 @@ int main(int argc, char** argv){
     struct timeval postTime;
     gettimeofday(&preTime, NULL);
     int i = 0;
+    int cpid;
     for(i; i < 5000; i++){
-        if(fork()){
-            wait(NULL);
+        cpid = fork();
+        if(cpid){
+            wait(&cpid);
         }
         else{
             exit(0);
