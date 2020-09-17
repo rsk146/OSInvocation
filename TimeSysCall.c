@@ -15,9 +15,10 @@ int main(int argc, char** argv){
         getpid();
     }
     gettimeofday(&postTime, NULL);
+    long diff = (postTime.tv_sec - preTime.tv_sec)*100000 + (postTime.tv_usec - preTime.tv_usec);
     printf("Syscalls Performed: 100000\n");
-    printf("Total Elapsed Time: %ld microseconds\n", postTime.tv_usec-preTime.tv_usec);
-    printf("Average Time Per SysCall: %f microseconds\n", (postTime.tv_usec-preTime.tv_usec)/100000.);
+    printf("Total Elapsed Time: %ld microseconds\n", diff);
+    printf("Average Time Per SysCall: %f microseconds\n", diff/100000.);
 
 }
 
