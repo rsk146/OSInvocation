@@ -9,8 +9,8 @@ int main(int argc, char** argv){
     struct timeval preTime;
     struct timeval postTime;
     gettimeofday(&preTime, NULL);
-    int i = 0;
-    for(i; i < 5000; i++){
+    int i;
+    for(i = 0; i < 5000; i++){
         if(fork()){
             wait(NULL);
         }
