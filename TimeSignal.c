@@ -17,9 +17,10 @@ void handle_signalFPE(int signum){
     gettimeofday(end, NULL);
     
     //printf("Start time: %ld\nEnd time: %ld\n", start->tv_usec, end->tv_usec);
+    long elapsedTime = 1000000 * (end->tv_sec - start->tv_sec) + (end->tv_usec - start->tv_usec);
     printf("Exceptions Occurred: %d\n", maxIters);
-    printf("Total Elapsed Time: %ld microseconds\n", end->tv_usec - start->tv_usec);
-    printf("Average Time Per SysCall: %f microseconds\n", (end->tv_usec - start->tv_usec)/100000.);
+    printf("Total Elapsed Time: %ld microseconds\n", elapsedTime);
+    printf("Average Time Per Exception: %f microseconds\n", (double)elapsedTime/maxIters);
 
     free(start); free(end);
     exit(0);
