@@ -10,17 +10,17 @@ int main(int argc, char** argv){
     struct timeval postTime;
     gettimeofday(&preTime, NULL);
     int i = 0;
-    pid_t cpid;
     for(i; i < 5000; i++){
         if(fork()){
-            cpid = wait(NULL);
+            wait(NULL);
         }
         else{
             exit(0);
         }
     }
     gettimeofday(&postTime, NULL);
-    printf("Forks Performed: 2\n");
-    printf("Total Elapsed Time: %ld microseconds\n", postTime.tv_usec-preTime.tv_usec);
-    printf("Average Time Per Fork: %f microseconds\n", (postTime.tv_usec-preTime.tv_usec)/100000.);
+    long diff = (postTime.tv_sec - preTime.tv_sec)*1000000 + (postTime.tv_usec - preTime.tv_usec);
+    printf("Forks Performed: 5000\n");
+    printf("Total Elapsed Time: %ld microseconds\n", diff);
+    printf("Average Time Per Fork: %f microseconds\n", diff/100000.);
 }
