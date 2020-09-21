@@ -18,7 +18,7 @@ int main(int argc, char** argv){
     long diff = (postTime.tv_sec - preTime.tv_sec)*100000 + (postTime.tv_usec - preTime.tv_usec);
     printf("Syscalls Performed: 100000\n");
     printf("Total Elapsed Time: %ld microseconds\n", diff);
-    printf("Average Time Per SysCall: %f microseconds\n", diff/100000.);
+    printf("Average Time Per Syscall: %f microseconds\n", diff/100000.);
 
 }
 
